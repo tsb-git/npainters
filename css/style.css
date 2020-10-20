@@ -899,6 +899,7 @@ h3 {
 /* line 45, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
 .header-area .main-header-area .logo-img {
   text-align: left;
+  
 }
 
 @media (max-width: 767px) {
@@ -908,14 +909,14 @@ h3 {
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 568px) and (max-width: 791px) {
   /* line 45, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
   .header-area .main-header-area .logo-img {
     text-align: left;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 792px) and (max-width: 1000px) {
   /* line 45, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
   .header-area .main-header-area .logo-img {
     text-align: left;
