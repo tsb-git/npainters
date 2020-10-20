@@ -898,7 +898,7 @@ h3 {
 
 /* line 45, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
 .header-area .main-header-area .logo-img {
-  text-align: center;
+  text-align: left;
 }
 
 @media (max-width: 767px) {
