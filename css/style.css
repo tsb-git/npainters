@@ -4708,7 +4708,10 @@ h6 {
   height: 100%;
   opacity: 0;
 }
-
+.zoomable { 
+    height: 500px; 
+    width: 100%; 
+}
 /* line 859, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_elements.scss */
 .disabled-checkbox input + label {
   position: absolute;

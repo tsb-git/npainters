@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+	<link href="css/jquery.fs.zoomer.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
@@ -143,11 +144,52 @@
 </head>
 <body>
 
+	
 
 
 <div class="row">
   <div class="column">
-    <img src="img/h4.jpg" alt="Snow" style="width:100%">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JavaScript Increasing and Decreasing Image Size</title>
+<script>
+    function zoomin(){
+        var myImg = document.getElementById("sky");
+        var currWidth = myImg.clientWidth;
+        if(currWidth == 500){
+            alert("Maximum zoom-in level reached.");
+        } else{
+            myImg.style.width = (currWidth + 50) + "px";
+        } 
+    }
+    function zoomout(){
+        var myImg = document.getElementById("sky");
+        var currWidth = myImg.clientWidth;
+        if(currWidth == 50){
+            alert("Maximum zoom-out level reached.");
+        } else{
+            myImg.style.width = (currWidth - 50) + "px";
+        }
+    }
+</script>
+</head>
+<body>
+    <br>
+    <img src="img/h3.jpg" id="sky" width="100%" alt="Cloudy Sky">
+	
+	<p>
+		<div class="newsletter_btn">
+		<br>
+			<button class="boxed-btn4 " type="button" onclick="zoomin()">+</button>
+			<button class="boxed-btn4 " type="button" onclick="zoomout()">-</button>
+		</div>
+										
+        
+    </p>
+</body>
+</html>
   </div>
   <div class="column">
   
@@ -505,6 +547,7 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/gijgo.min.js"></script>
+	<script src="js/jquery.fs.zoomer.js" type="text/javascript"></script>
 
 	<!--contact js-->
 	<script src="js/contact.js"></script>
