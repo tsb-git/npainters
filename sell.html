@@ -36,7 +36,7 @@
         <![endif]-->
 
     <!-- header-start -->
-    <header>
+    <header >
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
                 <div class="container-fluid">
@@ -56,15 +56,17 @@
                                             <li><a class="active" href="index.html"><b>                          </b></a></li>
 											<li><a class="active" href="index.html"><b>                          </b></a></li>
 											<li><a class="active" href="index.html"><b>                          </b></a></li>
-											<li><a href="#">Home</a></li>
+											<li><a class="active" href="index.html"><b>                       </b></a></li>
+											<li><a href="index.html">Home</a></li>
                                             <li><a href="#">About</a></li>
-                                            <li><a class="#" href="#">Buy</a></l/li>
-											<li><a class="#" href="#">Sell</a></l/li>
+                                            <li><a class="#" href="buy.html">Buy</a></l/li>
+											<li><a class="#" href="sell.html">Sell</a></l/li>
 											
 											
-                                            <li><a href="#">Auction</a></li>
+                                           
                                             
                                             <li><a href="#">Contact</a></li>
+											
 											
 											
 											
@@ -104,135 +106,72 @@
             </div>
         </div>
     </header>
+    <!-- header-end -->
+	
 
-<html lang="en">
-<head>
-   
-
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <style>
-        #myWindow {
-            cursor: grab;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #myContent {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        #myContent img {
-            display: block;
-            width: auto;
-            height: auto;
-            margin: auto;
-            align-self: center;
-            flex-shrink: 0;
-        }
-
-        #myContent div {
-            position: absolute;
-            font-size: 80px;
-        }
-    </style>
-</head>
-<body>
-<div class="container py-3">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-            
-            <div class="d-flex my-3">
-                <button data-zoom-down class="btn btn-info">Zoom Down</button>
-                <input data-zoom-range type="range" class="form-control-range"/>
-                <button data-zoom-up class="btn btn-info ml-auto">Zoom Up</button>
-            </div>
-
-            <div class="embed-responsive embed-responsive-4by3 rounded bg-secondary">
-                <div id="myWindow" class="embed-responsive-item">
-                    <div id="myContent">
-                        
-                        <img src="https://github.com/tsb-git/npainters/blob/master/img/zoom.jpg?raw=true" alt="image"/>
+	
+    
+    <div class="destination_details_info">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-9">
+                    
+                    
+                    <div class="contact_join">
+                        <h3>Sell your art work</h3>
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        <input type="text" placeholder="Artist Name">
+                                    </div>
+                                </div>
+								<div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        <input type="text" placeholder="Image Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        <input type="text" placeholder="Image Height">
+										<input type="text" placeholder="Image Breadth">
+										<input type="text" placeholder="Phone Depth">
+                                    </div>
+                                </div>
+								<div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        <input type="text" placeholder="Year">
+                                    </div>
+                                </div>
+								<div class="col-lg-6 col-md-6">
+                                    <div class="single_input">
+                                        <input type="text" placeholder="Media">
+                                    </div>
+                                </div>
+								
+                                <div class="col-lg-12">
+                                    <div class="single_input">
+                                        <textarea name="" id="" cols="30" rows="10"placeholder="Any Other Information" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="submit_btn">
+                                        <button class="boxed-btn4" type="submit">submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="dist/wheel-zoom.min.js" type="text/javascript"></script>
+    <!-- newletter_area_start  -->
+    
+    <!-- newletter_area_end  -->
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        var imageElement = document.getElementById('myContent').querySelector('img');
-
-        if (imageElement.complete) {
-            init();
-        } else {
-            imageElement.onload = init;
-        }
-
-        function init() {
-            var rangeElement = document.querySelector('[data-zoom-range]');
-
-            var wzoom = WZoom.create('#myContent', {
-                type: 'html',
-                width: imageElement.naturalWidth,
-                height: imageElement.naturalHeight,
-                dragScrollableOptions: {
-                    onGrab: function () {
-                        document.getElementById('myWindow').style.cursor = 'grabbing';
-                    },
-                    onDrop: function () {
-                        document.getElementById('myWindow').style.cursor = 'grab';
-                    }
-                },
-                prepare: function () {
-                    setTimeout(() => {
-                        rangeElement.min = wzoom.content.minScale;
-                        rangeElement.defaultValue = wzoom.content.minScale;
-                        rangeElement.max = wzoom.content.maxScale;
-                        rangeElement.step = 1 / this.speed;
-                    }, 0);
-                },
-                rescale: function () {
-                    rangeElement.value = wzoom.content.currentScale;
-                }
-            });
-
-            document.querySelector('[data-zoom-up]').addEventListener('click', function () {
-                wzoom.zoomUp();
-            });
-
-            document.querySelector('[data-zoom-down]').addEventListener('click', function () {
-                wzoom.zoomDown();
-            });
-
-            window.addEventListener('resize', function () {
-                wzoom.prepare();
-            });
-
-            rangeElement.addEventListener('input', function () {
-                let newScale = Number(rangeElement.value);
-
-                if (newScale > wzoom.content.currentScale) {
-                    wzoom.zoomUp();
-                } else {
-                    wzoom.zoomDown();
-                }
-            });
-        }
-    });
-</script>
-
-
+    
 
     <footer class="footer" style="background-color:#FCF7F7;">
         <div class="footer_top">
@@ -371,8 +310,11 @@
             </div>
         </div>
     </footer>
-	<div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+  <!-- Modal -->
+  <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="serch_form">
             <input type="text" placeholder="Search" >
@@ -381,35 +323,44 @@
       </div>
     </div>
   </div>
+    <!-- link that opens popup -->
+<!--     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 
-	<!-- JS here -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-	<script src="js/vendor/jquery-1.12.4.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/ajax-form.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/imagesloaded.pkgd.min.js"></script>
-	<script src="js/scrollIt.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/nice-select.min.js"></script>
-	<script src="js/jquery.slicknav.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/gijgo.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script> -->
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
+    <script src="js/slick.min.js"></script>
+   
 
-	<!--contact js-->
-	<script src="js/contact.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/mail-script.js"></script>
+    
+    <!--contact js-->
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
 
-	<script src="js/main.js"></script>
+
+    <script src="js/main.js"></script>
     <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',
@@ -417,13 +368,7 @@
              rightIcon: '<span class="fa fa-caret-down"></span>'
          }
         });
-        $('#datepicker2').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-             rightIcon: '<span class="fa fa-caret-down"></span>'
-         }
-
-        });
     </script>
 </body>
+
 </html>

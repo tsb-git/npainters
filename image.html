@@ -36,7 +36,7 @@
         <![endif]-->
 
     <!-- header-start -->
-    <header >
+    <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
                 <div class="container-fluid">
@@ -56,6 +56,7 @@
                                             <li><a class="active" href="index.html"><b>                          </b></a></li>
 											<li><a class="active" href="index.html"><b>                          </b></a></li>
 											<li><a class="active" href="index.html"><b>                          </b></a></li>
+											<li><a class="active" href="index.html"><b>                       </b></a></li>
 											<li><a href="index.html">Home</a></li>
                                             <li><a href="#">About</a></li>
                                             <li><a class="#" href="buy.html">Buy</a></l/li>
@@ -65,6 +66,7 @@
                                            
                                             
                                             <li><a href="#">Contact</a></li>
+											
 											
 											
 											
@@ -104,128 +106,184 @@
             </div>
         </div>
     </header>
-    <!-- header-end -->
 
-
-
-
-
-	
-	<div class="popular_places_area" >
-        <div class="container">
-		 
-            <div class="row">
-			<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-* {
-  box-sizing: border-box;
-}
+   
 
-.column {
-  float: left;
-  width: 50%;
-  padding: 5px;
-}
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        #myWindow {
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #myContent {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        #myContent img {
+            display: block;
+            width: auto;
+            height: auto;
+            margin: auto;
+            align-self: center;
+            flex-shrink: 0;
+        }
+
+        #myContent div {
+            position: absolute;
+            font-size: 80px;
+        }
+    </style>
 </head>
 <body>
-
-<div class="row">
-  <div class="column">
-    <a href="gallery.html"><img src="img/gal.jpg" alt="Snow" style="width:100%"></a>
-  </div>
-  <div class="column">
-    <a href="auction.html"><img src="img/auc.jpg" alt="Forest" style="width:100%"></a>
-  </div>
- 
-</div>
-
-</body>
-</html>
-			
-			
-                        
-                     
-                      
-                        
-                   
-                </div>
-				
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            
+            <div class="d-flex my-3">
+                <button data-zoom-down class="btn btn-info">Zoom Down</button>
+                <input data-zoom-range type="range" class="form-control-range"/>
+                <button data-zoom-up class="btn btn-info ml-auto">Zoom Up</button>
             </div>
-        </div>
-    </div>
-	
-	<div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about
-                                    new places to discover.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+            <div class="embed-responsive embed-responsive-4by3 rounded bg-secondary">
+                <div id="myWindow" class="embed-responsive-item">
+                    <div id="myContent">
+                        
+                        <img src="https://github.com/tsb-git/npainters/blob/master/img/zoom.jpg?raw=true" alt="image"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="destination_details_info">
+</div>
+
+<script src="dist/wheel-zoom.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var imageElement = document.getElementById('myContent').querySelector('img');
+
+        if (imageElement.complete) {
+            init();
+        } else {
+            imageElement.onload = init;
+        }
+
+        function init() {
+            var rangeElement = document.querySelector('[data-zoom-range]');
+
+            var wzoom = WZoom.create('#myContent', {
+                type: 'html',
+                width: imageElement.naturalWidth,
+                height: imageElement.naturalHeight,
+                dragScrollableOptions: {
+                    onGrab: function () {
+                        document.getElementById('myWindow').style.cursor = 'grabbing';
+                    },
+                    onDrop: function () {
+                        document.getElementById('myWindow').style.cursor = 'grab';
+                    }
+                },
+                prepare: function () {
+                    setTimeout(() => {
+                        rangeElement.min = wzoom.content.minScale;
+                        rangeElement.defaultValue = wzoom.content.minScale;
+                        rangeElement.max = wzoom.content.maxScale;
+                        rangeElement.step = 1 / this.speed;
+                    }, 0);
+                },
+                rescale: function () {
+                    rangeElement.value = wzoom.content.currentScale;
+                }
+            });
+
+            document.querySelector('[data-zoom-up]').addEventListener('click', function () {
+                wzoom.zoomUp();
+            });
+
+            document.querySelector('[data-zoom-down]').addEventListener('click', function () {
+                wzoom.zoomDown();
+            });
+
+            window.addEventListener('resize', function () {
+                wzoom.prepare();
+            });
+
+            rangeElement.addEventListener('input', function () {
+                let newScale = Number(rangeElement.value);
+
+                if (newScale > wzoom.content.currentScale) {
+                    wzoom.zoomUp();
+                } else {
+                    wzoom.zoomDown();
+                }
+            });
+        }
+    });
+</script>
+
+<div class="whole-wrap">
+		<div class="container box_1170">
+			
+			
+			<div class="section-top-border">
+				<h3 class="mb-30">About the image</h3>
+				<div class="row">
+					<div class="col-lg-12">
+						<blockquote class="generic-blockquote">
+							“Recently, the US Federal government banned online casinos from operating in America by
+							making it illegal to
+							transfer money to them through any US bank or payment system. As a result of this law, most
+							of the popular
+							online casino networks such as Party Gaming and PlayTech left the United States. Overnight,
+							online casino
+							players found themselves being chased by the Federal government. But, after a fortnight, the
+							online casino
+							industry came up with a solution and new online casinos started taking root. These began to
+							operate under a
+							different business umbrella, and by doing that, rendered the transfer of money to and from
+							them legal. A major
+							part of this was enlisting electronic banking systems that would accept this new
+							clarification and start doing
+							business with me. Listed in this article are the electronic banking”
+						</blockquote>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+		</div>
+	</div>
+
+<div class="destination_details_info">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-9">
+				
                     
                     
                     <div class="contact_join">
-                        <h3>Contact us</h3>
+                        
                         <form action="#">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="single_input">
-                                        <input type="text" placeholder="Your Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="single_input">
-                                        <input type="text" placeholder="Phone no.">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="single_input">
-                                        <textarea name="" id="" cols="30" rows="10"placeholder="Message" ></textarea>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-lg-12">
                                     <div class="submit_btn">
-                                        <button class="boxed-btn4" type="submit">submit</button>
+                                        <button class="boxed-btn4" type="submit">Buy Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -236,11 +294,7 @@
         </div>
     </div>
 
-    <!-- newletter_area_start  -->
-    
-    <!-- newletter_area_end  -->
 
-    
 
     <footer class="footer" style="background-color:#FCF7F7;">
         <div class="footer_top">
@@ -379,11 +433,8 @@
             </div>
         </div>
     </footer>
-
-
-  <!-- Modal -->
-  <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="serch_form">
             <input type="text" placeholder="Search" >
@@ -392,44 +443,35 @@
       </div>
     </div>
   </div>
-    <!-- link that opens popup -->
-<!--     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script> -->
-    <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
-    <script src="js/slick.min.js"></script>
-   
+	<!-- JS here -->
+	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/isotope.pkgd.min.js"></script>
+	<script src="js/ajax-form.js"></script>
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/scrollIt.js"></script>
+	<script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/nice-select.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/gijgo.min.js"></script>
 
-    
-    <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+	<!--contact js-->
+	<script src="js/contact.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/mail-script.js"></script>
 
-
-    <script src="js/main.js"></script>
+	<script src="js/main.js"></script>
     <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',
@@ -437,7 +479,13 @@
              rightIcon: '<span class="fa fa-caret-down"></span>'
          }
         });
+        $('#datepicker2').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+             rightIcon: '<span class="fa fa-caret-down"></span>'
+         }
+
+        });
     </script>
 </body>
-
 </html>
